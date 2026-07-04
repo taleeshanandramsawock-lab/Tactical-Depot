@@ -1,0 +1,28 @@
+micronaut:
+  application:
+    name: tacticalDepot
+  server:
+    port: 8080
+    cors:
+      enabled: true
+
+datasources:
+  default:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${MYSQL_DB:tactical_depot}
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:}
+    dialect: MYSQL
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
+
+logger:
+  levels:
+    com.tacticaldepot: INFO
+    org.hibernate.SQL: DEBUG

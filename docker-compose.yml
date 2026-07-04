@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: tactical-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: tactical_depot
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - tactical-network
+
+  backend:
+    build: ./backend/tactical
+    container_name: tactical-backend
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_DB: tactical_depot
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root123
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - tactical-network
+
+  tomcat:
+    image: tomcat:10-jdk17
+    container_name: tactical-tomcat
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./html:/usr/local/tomcat/webapps/tactical/html
+      - ./css:/usr/local/tomcat/webapps/tactical/css
+      - ./images:/usr/local/tomcat/webapps/tactical/images
+      - ./js:/usr/local/tomcat/webapps/tactical/js
+    networks:
+      - tactical-network
+
+volumes:
+  mysql-data:
+
+networks:
+  tactical-network:
+    driver: bridge
