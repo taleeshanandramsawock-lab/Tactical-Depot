@@ -8,7 +8,7 @@ micronaut:
 
 datasources:
   default:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${MYSQL_DB:tactical_depot}
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3307/${MYSQL_DB:tactical_depot}
     driverClassName: com.mysql.cj.jdbc.Driver
     username: ${MYSQL_USER:root}
     password: ${MYSQL_PASSWORD:}

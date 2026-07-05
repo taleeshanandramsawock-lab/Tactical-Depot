@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 function loadProducts() {
     $.ajax({
-        url: 'http://localhost:8080/api/products',
+        url: 'http://localhost:8082/api/products',
         method: 'GET',
         success: function(products) {
             displayProducts(products);
@@ -35,5 +35,5 @@ function displayProducts(products) {
 }
 
 function showError() {
-    $('#productList').html('<p class="text-danger">Error loading products</p>');
+    $('#productList').html('<p class="text-danger">Error loading products from API</p>');
 }

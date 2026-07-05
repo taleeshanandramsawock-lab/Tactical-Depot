@@ -1,0 +1,47 @@
+DATABASE SCHEMA DIAGRAM
+========================
+
+CUSTOMERS TABLE
+├── CustomerID (PK, INT, AUTO_INCREMENT)
+├── FirstName (VARCHAR 50)
+├── LastName (VARCHAR 50)
+├── Email (VARCHAR 100, UNIQUE)
+├── Phone (VARCHAR 20)
+├── Address (VARCHAR 255)
+└── DateRegistered (DATE)
+
+PRODUCTS TABLE
+├── ProductID (PK, INT, AUTO_INCREMENT)
+├── ProductName (VARCHAR 100)
+├── Category (VARCHAR 50)
+├── Price (DECIMAL 10,2)
+├── StockQuantity (INT)
+├── Description (TEXT)
+└── ProductImage (VARCHAR 255)
+
+ORDERS TABLE
+├── OrderID (PK, INT, AUTO_INCREMENT)
+├── CustomerID (FK → Customers.CustomerID)
+├── OrderDate (DATETIME)
+├── TotalAmount (DECIMAL 10,2)
+└── OrderStatus (VARCHAR 50)
+
+ORDERDETAILS TABLE
+├── OrderDetailID (PK, INT, AUTO_INCREMENT)
+├── OrderID (FK → Orders.OrderID)
+├── ProductID (FK → Products.ProductID)
+├── Quantity (INT)
+└── UnitPrice (DECIMAL 10,2)
+
+EMPLOYEES TABLE
+├── EmployeeID (PK, INT, AUTO_INCREMENT)
+├── FullName (VARCHAR 100)
+├── Position (VARCHAR 50)
+├── Email (VARCHAR 100, UNIQUE)
+├── Password (VARCHAR 255)
+└── HireDate (DATE)
+
+RELATIONSHIPS:
+- Customers (1) → (Many) Orders
+- Orders (1) → (Many) OrderDetails
+- Products (1) → (Many) OrderDetails

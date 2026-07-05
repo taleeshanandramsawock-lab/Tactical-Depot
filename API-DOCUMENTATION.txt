@@ -1,0 +1,29 @@
+API ENDPOINTS DOCUMENTATION
+============================
+
+BASE URL: http://localhost:8082/api
+
+PRODUCTS ENDPOINTS:
+-------------------
+GET    /products           - Get all products
+GET    /products/{id}      - Get product by ID
+POST   /products           - Create new product
+PUT    /products/{id}      - Update product
+DELETE /products/{id}      - Delete product
+
+AUTHENTICATION ENDPOINTS:
+-------------------------
+POST   /auth/login         - Employee login
+Body: {"email": "string", "password": "string"}
+Response: {"success": boolean, "message": "string", "user": "string"}
+
+EXAMPLE REQUESTS:
+-----------------
+
+1. Get all products:
+   curl http://localhost:8082/api/products
+
+2. Login:
+   curl -X POST http://localhost:8082/api/auth/login \
+   -H "Content-Type: application/json" \
+   -d '{"email":"admin@tacticaldepot.mu","password":"admin123"}'

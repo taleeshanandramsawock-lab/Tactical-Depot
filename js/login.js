@@ -11,7 +11,7 @@ $(document).ready(function() {
         }
         
         $.ajax({
-            url: 'http://localhost:8080/api/auth/login',
+            url: 'http://localhost:8082/api/auth/login',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({email: email, password: password}),
@@ -19,7 +19,7 @@ $(document).ready(function() {
                 if(response.success) {
                     $('#loginMessage').html('<div class="alert alert-success">' + response.message + '</div>');
                     setTimeout(function() {
-                        window.location.href = 'products.html';
+                        window.location.href = 'product.html';
                     }, 1500);
                 } else {
                     $('#loginMessage').html('<div class="alert alert-danger">' + response.message + '</div>');

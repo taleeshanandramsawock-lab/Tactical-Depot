@@ -8,7 +8,7 @@ services:
       MYSQL_ROOT_PASSWORD: root123
       MYSQL_DATABASE: tactical_depot
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
@@ -23,7 +23,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root123
     ports:
-      - "8080:8080"
+      - "8082:8080"
     depends_on:
       - mysql
     networks:
